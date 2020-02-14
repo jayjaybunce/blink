@@ -23,7 +23,7 @@
         "danger": "8.0.0",
         "enzyme": "3.11.0",
         "enzyme-adapter-react-16": "1.15.2",
-        "enzyme-to-json": "3.4.3",
+        "enzyme-to-json": "3.4.4",
         "eslint": "5.16.0",
         "gatsby-cli": "2.8.29",
         "husky": "2.4.1",
