@@ -106,6 +106,7 @@ workflows:
                       - deploy
                       - release
             - danger:
+                  context: BloodGulch
                   requires:
                       - install
             - deploy:
