@@ -28,7 +28,7 @@ jobs:
                   root: ~/
                   paths:
                       - project
-                      - ~/.cache/Cypress
+                      - .cache/Cypress
     alias:
         <<: *defaults
         steps:
