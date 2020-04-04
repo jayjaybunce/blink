@@ -25,20 +25,21 @@ jobs:
                   paths:
                       - ~/.cache/yarn
             - persist_to_workspace:
-                  root: .
+                  root: ~/
                   paths:
-                      - .
+                      - project
+                      - ~/.cache/Cypress
     alias:
         <<: *defaults
         steps:
             - attach_workspace:
-                  at: .
+                  at: ~/
             - run: yarn --silent now alias --token=$NOW_TOKEN
     build:
         <<: *defaults
         steps:
             - attach_workspace:
-                  at: .
+                  at: ~/
             - setup_remote_docker:
                   docker_layer_caching: true
             - run: echo "SKIP_PREFLIGHT_CHECK=true" > ./projects/create-react-app/.env
@@ -47,26 +48,26 @@ jobs:
         <<: *defaults
         steps:
             - attach_workspace:
-                  at: .
+                  at: ~/
             - run: yarn danger ci
     deploy:
         <<: *defaults
         steps:
             - attach_workspace:
-                  at: .
+                  at: ~/
             - run: yarn --silent now --token=$NOW_TOKEN
             - run: yarn --silent now --token=$NOW_TOKEN alias blink-$CIRCLE_SHA1.now.sh
     lint:
         <<: *defaults
         steps:
             - attach_workspace:
-                  at: .
+                  at: ~/
             - run: yarn lint
     release:
         <<: *defaults
         steps:
             - attach_workspace:
-                  at: .
+                  at: ~/
             - checkout
             - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
             - run: git config --global user.email "jerrod@goindev.io"
@@ -76,7 +77,7 @@ jobs:
         <<: *defaults
         steps:
             - attach_workspace:
-                  at: .
+                  at: ~/
             - run:
                   command: yarn test --ci --reporters=default --reporters=jest-junit --no-cache
                   environment:
@@ -88,7 +89,7 @@ jobs:
             - image: cypress/browsers:node12.16.1-chrome80-ff73
         steps:
             - attach_workspace:
-                  at: .
+                  at: ~/
             - run: yarn
             - run: CYPRESS_baseUrl=https://blink-$CIRCLE_SHA1.now.sh yarn cypress run
 
