@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.63](https://github.com/ascension/blink/compare/@blink/eslint-config@0.2.62...@blink/eslint-config@0.2.63) (2020-04-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency eslint-plugin-flowtype to v4.7.0 ([905195b](https://github.com/ascension/blink/commit/905195b983a526632dc278d146c02c7faa3eb1ed))
+
+
+
+
+
 ## 0.2.62 (2020-04-05)
 
 **Note:** Version bump only for package @blink/eslint-config
