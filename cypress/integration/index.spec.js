@@ -6,6 +6,6 @@ context('Actions', () => {
     })
 
     it('contains Jerrod', () => {
-        cy.get('h1').should('contain', 'Welcome')
+        cy.get('h1').should('contain', 'Blink')
     })
 })
