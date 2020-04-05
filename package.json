@@ -32,7 +32,7 @@
         "jest-emotion": "10.0.27",
         "jest-junit": "10.0.0",
         "lerna": "3.20.2",
-        "lint-staged": "10.0.7",
+        "lint-staged": "10.1.2",
         "now": "16.7.3",
         "npm-run-all": "4.1.5",
         "prettier": "2.0.2",
