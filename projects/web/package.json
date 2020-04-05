@@ -1,6 +1,6 @@
 {
     "name": "@blink/web",
-    "version": "0.10.32",
+    "version": "0.10.33",
     "description": "Next.js playground",
     "main": "index.js",
     "repository": "https://github.com/ascension/blink/tree/master/projects/next",
