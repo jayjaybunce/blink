@@ -6,7 +6,7 @@
     "author": "Jerrod",
     "license": "MIT",
     "dependencies": {
-        "babel-eslint": "10.0.3",
+        "babel-eslint": "10.1.0",
         "eslint": "6.8.0",
         "eslint-config-prettier": "6.10.0",
         "eslint-config-react-app": "^5.0.0",
