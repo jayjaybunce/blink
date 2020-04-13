@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const foldersCtrl = require('../../controllers/folders')
+
 
 /* GET users listing. */
-router.get('/', function(req, res) {
-    res.send('respond with a resource, folders route')
-})
+router.get('/', foldersCtrl.getFoldersForUser)
 
 module.exports = router

@@ -3,7 +3,7 @@ import { Text, View, Button, TouchableOpacity } from 'react-native'
 import styled, { css } from '@emotion/native'
 import DynInput from '../DynInput/DynInput'
 import { Icon } from 'react-native-elements'
-
+import userService from '../../utils/userService'
 
 const Container = styled.View`
     margin: 30px 20px 0 20px;
@@ -17,16 +17,57 @@ const ViewInline = styled.View`
 `
 
 const SignUpForm = props => {
-    const [passwordOne, setPasswordOne] = useState('')
-    const [passwordTwo, setPasswordTwo] = useState('')
+    const [password, setPassword] = useState(null)
+    const [passwordConf, setPasswordConf] = useState(null)
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
-    const doPasswordsMatch = () =>{
-        return (passwordOne && passwordTwo) && (passwordOne === passwordTwo)
+    const verifyInput = () => {
+        if (firstName && lastName && email){
+            return true
+        }else{
+            return false
+        }
     }
+    const doPasswordsMatch = () =>{
+        if(password === null && passwordConf === null || password === '' && passwordConf === ''){
+
+            return false
+        }else{
+            if(password === passwordConf){
+                return true
+            }else{
+                return false
+            }
+        }
+    }
+    const handleSubmit = async (e) => {
+        
+        console.log('handling submit')
+        try {
+          await userService.signup(
+              {
+                  firstName,
+                  lastName,
+                  email,
+                  password,
+                  passwordConf
+            }
+          );
+          // Let <App> know a user has signed up!
+          props.handleSignupOrLogin();
+          // Successfully signed up - show GamePage
+          props.history.push('/');
+        } catch (err) {
+            console.log(err)
+          // Invalid user data (probably duplicate email)
+        //   props.updateMessage(err.message);
+        }
+      }
+    
     return (
         <Container>
+        <Text style={styles.label}>{props.user ? props.user.firstName : 'No user'}</Text>
             <ViewInline>
                 <Text style={styles.label}>First Name</Text>
                 <Text style={styles.label}>Last Name</Text>
@@ -59,10 +100,10 @@ const SignUpForm = props => {
                 placeholder='Password'
                 textContentType='password'
                 secureTextEntry='true'
-                name='passwordOne'
+                name='password'
                 size='full'
-                inputValue={passwordOne}
-                handleChange={setPasswordOne}
+                inputValue={password}
+                handleChange={setPassword}
             />
             {doPasswordsMatch()?<Icon containerStyle={styles.passwordIcon} name='done' type='material' color='#e0e0e0' size='40'/>:null }
             <Text style={styles.label}>Confirm Password</Text>
@@ -71,21 +112,21 @@ const SignUpForm = props => {
                 textContentType='password'
                 secureTextEntry='true'
                 size='full'
-                name='passwordOne'
-                inputValue={passwordTwo}
-                handleChange={setPasswordTwo}
+                name='password'
+                inputValue={passwordConf}
+                handleChange={setPasswordConf}
             />
             {doPasswordsMatch()?<Icon containerStyle={styles.passwordIcon} name='done' type='material' color='#e0e0e0' size='40'/>:null }
             <Text style={styles.messageText}>
                 
             </Text>
-            <TouchableOpacity disabled={(passwordOne && passwordTwo) && !doPasswordsMatch()} style={styles.button}>
+            <TouchableOpacity disabled={!doPasswordsMatch() && !verifyInput()} style={styles.button} onPress={handleSubmit}>
                 <Text style={styles.buttonText}>
                     SIGN UP
                 </Text>
             </TouchableOpacity>
             <TouchableOpacity>
-                <Text style={styles.logInText}>LOG IN</Text>
+                <Text style={styles.logInText} onPress={() => props.navigation.navigate('Login')}>LOG IN</Text>
             </TouchableOpacity>
         </Container>
     )

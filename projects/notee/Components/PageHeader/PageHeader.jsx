@@ -4,7 +4,7 @@ import styled, { css } from '@emotion/native'
 
 
 const Header=styled.View`
-    margin: 100px 0 0 0;
+    margin: 50px 0 0 0;
 `
 const Title=styled.Text`
     text-align: center;
