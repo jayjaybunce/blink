@@ -10,7 +10,8 @@ const folderSchema = new Schema({
         required: true
     },
     color: {
-        type: String
+        type: String,
+        required: true
     }
 }, {
     timestamps: true

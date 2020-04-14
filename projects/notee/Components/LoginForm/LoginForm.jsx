@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import DynInput from '../DynInput/DynInput'
 import styled, { CSS } from '@emotion/native'
-import { TouchableOpacity, Text } from 'react-native'
+import { TouchableOpacity, Text, View } from 'react-native'
 import userService from '../../utils/userService'
 const Container = styled.View`
     margin: 30px 20px 0 20px;
@@ -15,19 +15,13 @@ const ViewInline = styled.View`
 `
 const LoginForm = props => {
     const handleSubmit = async (e) => {
-        console.log(email, password)
         try {
           await userService.login({
               email,
               password
           });
-          
-          // Let <App> know a user has signed up!
           props.handleSignupOrLogin();
-          // Successfully signed up - show GamePage
-          
         } catch (err) {
-          // Use a modal or toast in your apps instead of alert
           console.log(err)
           alert('Invalid Credentials!');
         }
@@ -41,19 +35,16 @@ const LoginForm = props => {
             return false
         }
     }
-
     return (
         <Container style={styles.centeredContainer}>
             <Text style={styles.label}>Email Address</Text>
             <DynInput
-                    placeholder='Email'
                     size='full'
                     inputValue={email}
                     handleChange={setEmail}
             />
             <Text style={styles.label}>Password</Text>
             <DynInput
-                placeholder='Password'
                 textContentType='password'
                 secureTextEntry='true'
                 name='password'
@@ -61,8 +52,8 @@ const LoginForm = props => {
                 inputValue={password}
                 handleChange={setPassword}
             />  
-            
-                
+            <View style={{height: 50}}>
+</View>   
             <TouchableOpacity style={styles.button} disabled={!verifyInput()} onPress={handleSubmit}>
                 <Text style={styles.buttonText}>
                     LOG IN
@@ -71,11 +62,10 @@ const LoginForm = props => {
             <TouchableOpacity>
                 <Text style={styles.logInText} onPress={() => props.navigation.navigate('Signup')}>Sign Up</Text>
             </TouchableOpacity>
-            
         </Container>
     )
-
 }
+
 const styles = {
     centeredContainer: {
         marginTop: 150,
@@ -92,6 +82,7 @@ const styles = {
         marginBottom: 5,
         padding: 5,
         display: 'flex',
+        color: 'white', 
         width: '50%',
         alignSelf: 'flex-start',
     },

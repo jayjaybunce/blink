@@ -1,36 +1,133 @@
 import React from 'react'
 import folderService from '../../utils/folderService'
 import { Text, View } from 'react-native'
+import styled from '@emotion/native'
+import FolderCard from '../FolderCard/FolderCard'
+import Swipeout from 'react-native-swipeout'
 
+
+const Container = styled.View`
+    width: 90%;
+    background-color: white;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 5px #cfcfcf;
+
+`
+const shadow = {
+    shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 2,
+},
+shadowOpacity: 0.25,
+shadowRadius: 3.84,
+
+elevation: 5,
+}
 
 class FoldersList extends React.Component{
     state = {
-        folders: null
+        folders: []
+    }
+    handleDelete = async (folderId) => {
+        try{
+            const res = await folderService.deleteFolder(folderId)
+            if(res.status === 200){
+                let folders = this.state.folders.filter(folder => folder._id !== folderId)
+                this.setState({
+                    folders: folders
+                })
+            }
+        }catch(error){
+
+        }
+    }
+    handleEdit = (folderId) => {
+        // take to new page and edit.
     }
     async componentDidMount(){
         const folders = await folderService.getFoldersForUser()
-        console.log('got folders from backend',folders)
         
         this.setState({
-            state: folders
+            folders: folders
         })
      
     }
+    async componentWillReceiveProps(){
+        const folders = await folderService.getFoldersForUser()
+        
+        this.setState({
+            folders: folders
+        })
+    }
+    
     render(){
-        console.log(this.state.folders)
+        const swipeoutBtns = [
+            {
+                text: 'Delete',
+                backgroundColor: 'red',
+                underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+                onPress: (event) =>this.handleSubmit(event)
+        
+            },
+            {
+                text: 'Edit',
+                backgroundColor: '#42f5f2',
+                underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+            }
+        ]
         return(
-            <View>
-                <Text>
+
+            <Container>
                     {this.state.folders ? this.state.folders.map((folder,index) => {
                         return(
-                            <View>
-                                {folder.title}
-                            </View>
+                            <Swipeout 
+                                buttonWidth={50}
+                                right={
+                                    [
+                                        {
+                                            text: 'Delete',
+                                            backgroundColor: 'red',
+                                            underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+                                            onPress: () =>this.handleDelete(folder._id)
+                                    
+                                        },
+                                        {
+                                            text: 'Edit',
+                                            backgroundColor: '#42f5f2',
+                                            underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+                                            onPress: () =>this.handleEdit(folder._id)
+                                        }
+                                    ]
+                                } 
+                                backgroundColor='transparent' 
+                                style={{
+                                    height: 60,  
+                                    shadowColor: '#000',
+                                    shadowOffset: { 
+                                        width: 0, 
+                                        height: 1 
+                                        },
+                                    shadowOpacity: 0.5,
+                                    shadowRadius: 3, }}
+                                    
+                            >
+                            <FolderCard 
+                            title={folder.title}
+                            color={folder.color}
+                            id={folder._id}
+                            key={index}
+                            />
+                            </Swipeout>
                         )
                     }): 'no folders'}
                     
-                </Text>
-            </View>
+                
+            </Container>
         )
         }
 

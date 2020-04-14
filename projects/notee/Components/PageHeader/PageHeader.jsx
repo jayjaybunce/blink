@@ -9,11 +9,13 @@ const Header=styled.View`
 const Title=styled.Text`
     text-align: center;
     font-size: 30px;
+    color: white;
 `
 
 const Description=styled.Text`
     text-align: center;
     font-size: 12px;
+    color: white;
     margin: 10px 20px 0 20px;
 
 `

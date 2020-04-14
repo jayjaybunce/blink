@@ -30,6 +30,7 @@ const Title = styled.Text`
 
 
 const AccountPage = props => {
+    // console.log(props)
     return(
         <>
             <LinearGradient

@@ -12,7 +12,6 @@ const getFoldersForUser = async () => {
                 'Authorization': 'Bearer ' + token
             }
         })
-        console.log('response',response)
         return response.json()
 
     }catch(e){
@@ -20,6 +19,45 @@ const getFoldersForUser = async () => {
     }
 }
 
+
+const createFolder = async (folderData) => {
+    const token = await tokenService.getToken()
+    try{
+        const response = await fetch(BASE_URL, {
+           method: 'POST' ,
+           headers: {
+               'Content-type': 'application/json',
+               'Authorization': 'Bearer ' + token
+           },
+           body: JSON.stringify(folderData)
+        })
+        return response
+    }catch(error){
+        console.log(error)
+    }
+}
+
+
+const deleteFolder = async(folderId) => {
+    const token = await tokenService.getToken()
+    try {
+        const response = await fetch(BASE_URL,{
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify({id: folderId})
+        })
+        return response
+    }catch(error){
+        console.log('error in delete folder', error)
+    }
+}
+
+
 export default {
     getFoldersForUser,
+    createFolder,
+    deleteFolder
 }

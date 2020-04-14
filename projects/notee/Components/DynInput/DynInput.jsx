@@ -12,7 +12,9 @@ const DynInput = props => {
                 style={
                     [
                         styles.input,
-                        props.size === 'full'? styles.fullWidthInput: styles.halfWidthInput
+                        props.size === 'full'? styles.fullWidthInput: styles.halfWidthInput,
+                        props.validInput === true ? styles.borderGreen : styles.borderWhite,
+                        props.blackBorder === true ? styles.borderBlack : null
                     ]
                 }
                 placeholder={props.placeholder}
@@ -43,11 +45,20 @@ const styles = StyleSheet.create({
     },
     input: {
         padding: 5,
-        borderBottomColor: '#00e676',
         borderBottomWidth: 1,
         height: 50,
+        
 
-    }    
+    },
+    borderGreen: {
+        borderBottomColor: '#00ff9d'
+    },
+    borderWhite: {
+        borderBottomColor: 'white'
+    },
+    borderBlack:{
+        borderBottomColor: 'black'
+    }
 })
 
 

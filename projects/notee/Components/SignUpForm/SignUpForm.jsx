@@ -22,6 +22,7 @@ const SignUpForm = props => {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
+    const [error, setError] = useState(null)
     const verifyInput = () => {
         if (firstName && lastName && email){
             return true
@@ -35,12 +36,30 @@ const SignUpForm = props => {
             return false
         }else{
             if(password === passwordConf){
-                return true
+                if(password.length >= 8){
+                    return true
+                }else{
+                    return false
+                }
             }else{
                 return false
             }
+    }
+}
+    const emailIsValid = () => {
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        try{
+            let arr = email.match(emailPattern)
+            
+            if(arr[0].length===email.length){
+                return true
+            }
+
+        }catch(e){
+
         }
     }
+
     const handleSubmit = async (e) => {
         
         console.log('handling submit')
@@ -60,67 +79,72 @@ const SignUpForm = props => {
           props.history.push('/');
         } catch (err) {
             console.log(err)
+            setError(err)
           // Invalid user data (probably duplicate email)
         //   props.updateMessage(err.message);
         }
       }
     
-    return (
+      return (
         <Container>
-        <Text style={styles.label}>{props.user ? props.user.firstName : 'No user'}</Text>
             <ViewInline>
                 <Text style={styles.label}>First Name</Text>
                 <Text style={styles.label}>Last Name</Text>
                 <DynInput
-                    placeholder='First Name'
+                    
                     autoCapitalize='words'
                     size='half'
                     inputValue={firstName}
                     handleChange={setFirstName}
+                    validInput={firstName ? true : false}
                 />
                 
                 <DynInput
-                    placeholder='Last Name'
+                    
                     autoCapitalize='words'
                     size='half'
                     inputValue={lastName}
                     handleChange={setLastName}
+                    validInput={lastName ? true : false}
                 />
             </ViewInline>
             <Text style={styles.label}>Email</Text>
             <DynInput
-                placeholder='Email'
+                
                 keyboardType='email-address'
                 size='full'
                 inputValue={email}
                 handleChange={setEmail}
+                validInput={emailIsValid()}
             />
             <Text style={styles.label}>Password</Text>
             <DynInput
-                placeholder='Password'
+                placeholder='Eight or more characters'
                 textContentType='password'
                 secureTextEntry='true'
                 name='password'
                 size='full'
                 inputValue={password}
                 handleChange={setPassword}
+                validInput={doPasswordsMatch()}
             />
             {doPasswordsMatch()?<Icon containerStyle={styles.passwordIcon} name='done' type='material' color='#e0e0e0' size='40'/>:null }
             <Text style={styles.label}>Confirm Password</Text>
             <DynInput
-                placeholder='Password'
+                placeholder='Eight or more characters'
                 textContentType='password'
                 secureTextEntry='true'
                 size='full'
                 name='password'
                 inputValue={passwordConf}
                 handleChange={setPasswordConf}
+                validInput={doPasswordsMatch()}
             />
             {doPasswordsMatch()?<Icon containerStyle={styles.passwordIcon} name='done' type='material' color='#e0e0e0' size='40'/>:null }
             <Text style={styles.messageText}>
                 
             </Text>
-            <TouchableOpacity disabled={!doPasswordsMatch() && !verifyInput()} style={styles.button} onPress={handleSubmit}>
+            <TouchableOpacity disabled={doPasswordsMatch() && !verifyInput()} style={styles.button} onPress={handleSubmit}>
                 <Text style={styles.buttonText}>
                     SIGN UP
                 </Text>
@@ -128,6 +152,9 @@ const SignUpForm = props => {
             <TouchableOpacity>
                 <Text style={styles.logInText} onPress={() => props.navigation.navigate('Login')}>LOG IN</Text>
             </TouchableOpacity>
+            <View style={{height: 150}}>
+
+            </View>
         </Container>
     )
 }
@@ -145,6 +172,7 @@ const styles = {
         padding: 5,
         display: 'flex',
         width: '50%',
+        color: 'white',
         alignSelf: 'flex-start',
     },
     button: {

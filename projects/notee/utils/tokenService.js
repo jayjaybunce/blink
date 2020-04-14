@@ -20,12 +20,13 @@ const getToken = async () => {
         }catch(e){
         }
     }
+
     return token;
 }
 
 const getUserFromToken = async () => {
     const token = await getToken();
-    return (token ? JSON.parse(atob(token.split('.')[1])).user : null);
+    return token ? JSON.parse(atob(token.split('.')[1])).user : null;
 
 }
 

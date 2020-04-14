@@ -18,8 +18,6 @@ const signup = user => {
 
 const getUser = async () => {
     let token = await tokenService.getUserFromToken()
-    
-    
     return token
 }
 
