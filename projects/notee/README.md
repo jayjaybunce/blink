@@ -15,6 +15,11 @@ Users who signup can utilize Notee's features, which include:
 -- User profile customization
 
 -- Add a timer to your notes, a notification will sound when that time comes
-
+<p align="center">
 Screenshots
-![! Sign up Page](https://i.imgur.com/W4cfnib.jpg)
+</p>
+<p align="center"><img src="https://i.imgur.com/3HQ9ooB.png" width="250" align="center"></p>
+<p align="center"><img src="https://i.imgur.com/mLmZL1Q.png" width="250" align="center"></p>
+<p align="center"><img src="https://i.imgur.com/LdklBzU.png" width="250" align="center"></p>
+<p align="center"><img src="https://i.imgur.com/mLUtX9B.jpg" width="250" align="center"></p>
+<p align="center"><img src="https://i.imgur.com/EJMg87B.png" width="250" align="center"></p>
