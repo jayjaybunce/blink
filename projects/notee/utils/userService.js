@@ -1,6 +1,7 @@
 import tokenService from './tokenService'
 
 const BASE_URL = 'http://192.168.0.34:3000/noteeapi/api/users/'
+// const BASE_URL = 'http://notee-backend.herokuapp.com/noteeapi/api/users/'
 
 const signup = user => {
     return fetch(BASE_URL + 'signup', {
@@ -32,6 +33,7 @@ const login = creds => {
         body: JSON.stringify(creds)
     })
     .then(res => {
+        console.log(res)
         if (res.ok) return res.json()
         throw new Error('Bad Credentials')
     })

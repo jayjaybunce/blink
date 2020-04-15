@@ -87,7 +87,7 @@ class EditNoteForm extends React.Component{
         return(
             <>
             <LinearGradient
-            colors={['#833ab4','#fd1d1d','#fcb045']}
+            colors={['#833ab4','#1debfd','#1dfd79']}
             start={{ x: 0, y: 1 }}
             end={{ x: 1, y: 1 }}
             

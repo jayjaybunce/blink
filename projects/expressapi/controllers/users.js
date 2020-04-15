@@ -11,17 +11,18 @@ module.exports = {
 
 
 async function signup(req, res){
-    // Create an instance of the User model based off the information send on the request.body object !! ENSURE STATE VARS MATCH
-    
     const user = new User(req.body);
-    // Try to save the user asynchronously
     try{
         await user.save();
-        // As long as the save goes through, create a token based off the newly created user and send back a token on the response
+        let miscFolder = new Folder({owner: user._id, title: 'Misc', color: '#34dbeb'})
+        let workFolder = new Folder({owner: user._id, title: 'Work', color: '#7500e3'})
+        let todoFolder = new Folder({owner: user._id, title: 'To-Do', color: '#90e300'})
+        miscFolder.save()
+        workFolder.save()
+        todoFolder.save()
         const token = createJWT(user);
         res.json({token});
     }catch(err){
-        // In case of any save errors or issues creating a JWT, send a status 400 and the error back on the response object
         console.log(err)
         res.status(400).json(err);
     }
