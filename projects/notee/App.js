@@ -16,6 +16,7 @@ import NewFolder from './components/NewFolder/NewFolder';
 import EditFolder from './components/EditFolder/EditFolder';
 import NotesPage from './components/pages/NotesPage';
 import NewNoteForm from './components/NewNoteForm/NewNoteForm';
+import EditNoteForm from './components/EditNoteForm/EditNoteForm';
 const RootStack = createStackNavigator();
 const Stack = createStackNavigator()
 // const ModalStack = createStackNavigator();
@@ -119,6 +120,16 @@ class App extends React.Component{
                         props=>
                         <NewNoteForm
                           {...props}
+                        />
+                      }
+                    </Stack.Screen>
+                    <Stack.Screen name='EditNote'>
+                      {
+                        props=>
+                        <EditNoteForm
+                          {...props}
+                          user={this.state.user}
+                          handleLogout={this.handleLogout}
                         />
                       }
                     </Stack.Screen>

@@ -36,7 +36,42 @@ const createNote = async (folderId, note) => {
     
 }
 
+const updateNote = async(folderId, note) => {
+    const token = await tokenService.getToken()
+    try {
+        const response = await fetch(BASE_URL + folderId, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify(note)
+        })
+        return response
+    }catch(error){
+        console.log('updateNote', note)
+    }
+}
+const deleteNote = async (folderId, noteId) => {
+    const token = await tokenService.getToken()
+    try{
+        const response = await fetch(BASE_URL + folderId + '/' + noteId, {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        })
+        return response
+    }catch(error){
+        console.log('deleteNote', error)
+    }
+}
+
+
 export default {
     getNotesForFolder,
-    createNote
+    createNote,
+    updateNote,
+    deleteNote
 }

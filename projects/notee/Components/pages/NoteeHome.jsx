@@ -18,7 +18,6 @@ const NoteeHome = props => {
                 user={props.user}
                 navigation={props.navigation}
             />
-            <Text>Your Folders</Text>
             <FoldersList 
             navigation={props.navigation}
             isFocused={isFocused}/>

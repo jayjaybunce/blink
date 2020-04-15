@@ -10,9 +10,7 @@ const getTitle = (noteContent) => {
 
 const getNotesForFolder = async (req,res) => {
     try{
-
         const notes = await Note.find({folder: req.params.id})
-        console.log('notes found:', notes)
         res.status(200).json(notes)
     }catch(error){
         console.log('getnotesforfolder', error)
@@ -35,7 +33,28 @@ const createNote = async (req, res) => {
     }
 }
 
+const updateNote = async (req,res) => {
+    try{
+        const response = await Note.findOneAndUpdate({_id: req.body._id}, req.body)
+        console.log(response)
+        res.status(200).send('Note updated')
+    }catch(error){
+        console.log('updateNote', error)
+    }
+}
+
+const deleteNote = async (req, res) => {
+    try {
+        const response = await Note.findByIdAndRemove(req.params.nId)
+        res.status(200).send('Note Removed')
+    }catch(error){
+        console.log(error)
+    }
+}
+
 module.exports = {
     getNotesForFolder,
-    createNote
+    createNote,
+    updateNote,
+    deleteNote
 }

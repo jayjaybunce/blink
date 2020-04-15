@@ -6,6 +6,8 @@ const notesRouter = require('./notes')
 /* GET users listing. */
 router.get('/:id', notesRouter)
 router.post('/:id', notesRouter)
+router.put('/:id', notesRouter)
+router.delete('/:id/:nId', notesRouter)
 router.get('/', foldersCtrl.getFoldersForUser)
 router.post('/', foldersCtrl.createFolder)
 router.delete('/',foldersCtrl.deleteFolder)

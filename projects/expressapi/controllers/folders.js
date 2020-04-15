@@ -6,7 +6,6 @@ const getFoldersForUser = async (req,res) => {
 }
 
 const createFolder = async (req,res) => {
-    console.log(req.body)
     try{
         const folder = await Folder.create({owner: req.user, title: req.body.title, color: req.body.color} )
         folder.save()

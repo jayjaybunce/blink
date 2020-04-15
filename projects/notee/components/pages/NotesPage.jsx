@@ -66,6 +66,7 @@ const NotesPage = props => {
                     </Header>
                 <ColorBar style={{backgroundColor: props.route.params.folder.color}}/>
                 <NotesList
+                    navigation={props.navigation}
                     isFocused={isFocused}
                     folder={props.route.params.folder}
                 />

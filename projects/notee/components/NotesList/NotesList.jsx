@@ -2,7 +2,6 @@ import React from 'react'
 import noteService from '../../utils/noteService'
 import { View, Text, ScrollView, } from 'react-native'
 import styled from '@emotion/native'
-import folderService from '../../utils/folderService'
 import NoteCard from '../NoteCard/NoteCard'
 import Swipeout from 'react-native-swipeout'
 
@@ -37,10 +36,16 @@ class NotesList extends React.Component{
             notes: notes
         })
     }
-
+    handleDelete = async (folderId, noteId) => {
+        try{
+            const response = await noteService.deleteNote(folderId, noteId)
+        }catch(error){
+            console.log('NotesList handle delete', error)
+        }
+    }
     render(){
         return(
-            <Container>
+            <Container style={{height: '75%'}}>
             <ScrollView >
                 { this.state.notes ? this.state.notes.map((note, index)=> {
                     return(
@@ -54,15 +59,9 @@ class NotesList extends React.Component{
                                             text: 'Delete',
                                             backgroundColor: 'red',
                                             underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-                                            onPress: () =>this.handleDelete(folder._id)
+                                            onPress: () =>this.handleDelete(note.folder,note._id)
                                     
                                         },
-                                        {
-                                            text: 'Edit',
-                                            backgroundColor: '#42f5f2',
-                                            underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-                                            onPress: () =>this.handleEdit({title: folder.title, color: folder.color, id: folder._id})
-                                        }
                                     ]
                                 } 
                                 backgroundColor='transparent' 
@@ -75,13 +74,14 @@ class NotesList extends React.Component{
                                         },
                                     shadowOpacity: 0.5,
                                     shadowRadius: 3, }}
-                                    
                             >
                         <NoteCard
+                            navigation={this.props.navigation}
+                            folder={this.props.folder}
+                            note={note}
                             key={index}
                             title={note.title}
                         />
-                        
                         </Swipeout>
                     )
                 })
