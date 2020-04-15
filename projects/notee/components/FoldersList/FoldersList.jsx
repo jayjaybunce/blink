@@ -47,7 +47,8 @@ class FoldersList extends React.Component{
         }
     }
     handleEdit = (folderId) => {
-        // take to new page and edit.
+        this.props.navigation.navigate('EditFolder',folderId)
+        
     }
     async componentDidMount(){
         const folders = await folderService.getFoldersForUser()
@@ -81,12 +82,14 @@ class FoldersList extends React.Component{
             }
         ]
         return(
-
+            
             <Container>
                     {this.state.folders ? this.state.folders.map((folder,index) => {
                         return(
                             <Swipeout 
-                                buttonWidth={50}
+                                sensitivity={10}
+                                autoClose={true}
+                                buttonWidth={60}
                                 right={
                                     [
                                         {
@@ -100,13 +103,13 @@ class FoldersList extends React.Component{
                                             text: 'Edit',
                                             backgroundColor: '#42f5f2',
                                             underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-                                            onPress: () =>this.handleEdit(folder._id)
+                                            onPress: () =>this.handleEdit({title: folder.title, color: folder.color, id: folder._id})
                                         }
                                     ]
                                 } 
                                 backgroundColor='transparent' 
                                 style={{
-                                    height: 60,  
+                                    height: 80,  
                                     shadowColor: '#000',
                                     shadowOffset: { 
                                         width: 0, 
@@ -116,11 +119,13 @@ class FoldersList extends React.Component{
                                     shadowRadius: 3, }}
                                     
                             >
-                            <FolderCard 
+                            <FolderCard
+                            folder={folder} 
                             title={folder.title}
                             color={folder.color}
                             id={folder._id}
                             key={index}
+                            navigation={this.props.navigation}
                             />
                             </Swipeout>
                         )

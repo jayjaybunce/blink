@@ -1,92 +1,50 @@
 import React from 'react'
-import folderService from '../../utils/folderService'
-import { Text, View } from 'react-native'
+import noteService from '../../utils/noteService'
+import { View, Text, ScrollView, } from 'react-native'
 import styled from '@emotion/native'
-import FolderCard from '../FolderCard/FolderCard'
+import folderService from '../../utils/folderService'
+import NoteCard from '../NoteCard/NoteCard'
 import Swipeout from 'react-native-swipeout'
-
 
 const Container = styled.View`
     width: 90%;
     background-color: white;
     height: 100%;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 10px;
     padding: 10px;
+    padding-top:20px;
+    padding-bottom: 50px;
     border-radius: 10px;
     box-shadow: 0px 10px 5px #cfcfcf;
 
 `
-const shadow = {
-    shadowColor: "#000",
-shadowOffset: {
-	width: 0,
-	height: 2,
-},
-shadowOpacity: 0.25,
-shadowRadius: 3.84,
 
-elevation: 5,
-}
-
-class FoldersList extends React.Component{
+class NotesList extends React.Component{
     state = {
-        folders: []
-    }
-    handleDelete = async (folderId) => {
-        try{
-            const res = await folderService.deleteFolder(folderId)
-            if(res.status === 200){
-                let folders = this.state.folders.filter(folder => folder._id !== folderId)
-                this.setState({
-                    folders: folders
-                })
-            }
-        }catch(error){
-
-        }
-    }
-    handleEdit = (folderId) => {
-        this.props.navigation.navigate('EditFolder',folderId)
-        
+        notes: null,
+        offset: 0
     }
     async componentDidMount(){
-        const folders = await folderService.getFoldersForUser()
-        
+        const notes = await noteService.getNotesForFolder(this.props.folder._id)
         this.setState({
-            folders: folders
+            notes: notes
         })
-     
     }
     async componentWillReceiveProps(){
-        const folders = await folderService.getFoldersForUser()
-        
+        const notes = await noteService.getNotesForFolder(this.props.folder._id)
         this.setState({
-            folders: folders
+            notes: notes
         })
     }
-    
+
     render(){
-        const swipeoutBtns = [
-            {
-                text: 'Delete',
-                backgroundColor: 'red',
-                underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-                onPress: (event) =>this.handleSubmit(event)
-        
-            },
-            {
-                text: 'Edit',
-                backgroundColor: '#42f5f2',
-                underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-            }
-        ]
         return(
-            
             <Container>
-                    {this.state.folders ? this.state.folders.map((folder,index) => {
-                        return(
-                            <Swipeout 
+            <ScrollView >
+                { this.state.notes ? this.state.notes.map((note, index)=> {
+                    return(
+                        <Swipeout 
                                 sensitivity={10}
                                 autoClose={true}
                                 buttonWidth={60}
@@ -119,23 +77,21 @@ class FoldersList extends React.Component{
                                     shadowRadius: 3, }}
                                     
                             >
-                            <FolderCard
-                            folder={folder} 
-                            title={folder.title}
-                            color={folder.color}
-                            id={folder._id}
+                        <NoteCard
                             key={index}
-                            navigation={this.props.navigation}
-                            />
-                            </Swipeout>
-                        )
-                    }): 'no folders'}
-                    
-                
-            </Container>
-        )
-        }
+                            title={note.title}
+                        />
+                        
+                        </Swipeout>
+                    )
+                })
+                : null}
 
+                </ScrollView>
+            </Container>
+            
+        )
+    }
 }
 
-export default FoldersList;
+export default NotesList

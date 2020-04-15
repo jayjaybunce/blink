@@ -13,6 +13,9 @@ import HomePage from './components/pages/HomePage'
 import NoteeHome from './components/pages/NoteeHome';
 import AccountPage from './components/pages/AccountPage'
 import NewFolder from './components/NewFolder/NewFolder';
+import EditFolder from './components/EditFolder/EditFolder';
+import NotesPage from './components/pages/NotesPage';
+import NewNoteForm from './components/NewNoteForm/NewNoteForm';
 const RootStack = createStackNavigator();
 const Stack = createStackNavigator()
 // const ModalStack = createStackNavigator();
@@ -90,7 +93,35 @@ class App extends React.Component{
                         
                       }
                     </Stack.Screen>
-          
+                    <Stack.Screen name='EditFolder'>
+                      {
+                        props=>
+                          <EditFolder
+                            {...props}
+                            user={this.state.user}
+                            handleLogout={this.handleLogout}
+                          />
+                      }
+                    </Stack.Screen>
+                    <Stack.Screen name='NotesPage'>
+                      {
+                        props=>
+                          <NotesPage
+                            {...props}
+                            user={this.state.user}
+                            handleLogout={this.handleLogout}
+                          />
+                      }
+                    
+                    </Stack.Screen>
+                    <Stack.Screen name='NewNote'>
+                      {
+                        props=>
+                        <NewNoteForm
+                          {...props}
+                        />
+                      }
+                    </Stack.Screen>
             </Stack.Navigator>
         :
             <Stack.Navigator

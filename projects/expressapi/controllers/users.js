@@ -1,12 +1,14 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 const SECRET = process.env.SECRET
-
+const Folder = require('../models/folder')
 
 module.exports = {
     signup,
     login
 }
+
+
 
 async function signup(req, res){
     // Create an instance of the User model based off the information send on the request.body object !! ENSURE STATE VARS MATCH

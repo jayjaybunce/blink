@@ -1,7 +1,5 @@
 const Folder = require('../models/folder')
 
-
-
 const getFoldersForUser = async (req,res) => {
     const folders = await Folder.find({owner: req.user})
     res.json(folders)
@@ -25,14 +23,21 @@ const deleteFolder = async (req,res) => {
     }catch(e){
         console.log(e)
     }
-
-    console.log(req.user)
-    console.log(req.body)
 }
 
+const updateFolder = async (req,res) => {
+    try{
+        const properties = {title: req.body.title, color: req.body.color}
+        const response = await Folder.findOneAndUpdate({_id: req.body._id}, properties)
+        res.status(200).send('Folder updated')
+    }catch(error){
+        console.log(error)
+    }
+}
 
 module.exports = {
     getFoldersForUser,
     createFolder,
-    deleteFolder
+    deleteFolder,
+    updateFolder
 }

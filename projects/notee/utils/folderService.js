@@ -55,9 +55,25 @@ const deleteFolder = async(folderId) => {
     }
 }
 
-
+const updateFolder = async(folderData) => {
+    const token = await tokenService.getToken()
+    try {
+        const response = await fetch(BASE_URL, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify(folderData)
+        })
+        return response;
+    }catch(error){
+        console.log(error)
+    }
+}
 export default {
     getFoldersForUser,
     createFolder,
-    deleteFolder
+    deleteFolder,
+    updateFolder
 }

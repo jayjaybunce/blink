@@ -123,6 +123,7 @@ const NewFolder = props => {
         }}/>
 
         </View>
+        <Text style={{fontSize:20, textAlign: 'center'}}>Tap Center To Confirm Color</Text>
         <ColorPicker 
             onColorChange={setColor}
             onColorSelected={setColor}

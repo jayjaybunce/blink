@@ -2,11 +2,11 @@ import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 import styled from '@emotion/native'
 
-const Card = styled.View`
+const Card = styled.TouchableOpacity`
     width: 98%;
     ${'' /* box-shadow: 0px 10px 5px #cfcfcf; */}
     color: black;
-    height: 40px;
+    height: 60px;
     margin: 0 auto;
     margin-top: 0px;
     padding-left: 10px;
@@ -19,23 +19,25 @@ const Card = styled.View`
 `
 const FolderTitle = styled.Text`
     font-size: 30px;
+    line-height: 60px;
 
 
 
 `
 const ColorSwatch = styled.View`
-    height: 40px;
+    height: 60px;
     
     display: block;
-    width: 40px;
+    width: 60px;
 
     
 `
 const FolderCard = props => {
     return(
-        <Card>
+        <Card onPress={()=>props.navigation.navigate('NotesPage', {folder: props.folder})}>
             <FolderTitle>
                 {props.title}
+                
             </FolderTitle>
             <ColorSwatch style={{backgroundColor: props.color}}/>
         </Card>

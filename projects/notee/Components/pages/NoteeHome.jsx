@@ -20,6 +20,7 @@ const NoteeHome = props => {
             />
             <Text>Your Folders</Text>
             <FoldersList 
+            navigation={props.navigation}
             isFocused={isFocused}/>
         </View>
     )

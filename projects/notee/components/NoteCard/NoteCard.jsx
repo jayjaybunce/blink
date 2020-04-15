@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, TouchableOpacity } from 'react-native'
+import { Text, View, TouchableOpacity} from 'react-native'
 import styled from '@emotion/native'
 
 const Card = styled.TouchableOpacity`
@@ -24,25 +24,15 @@ const FolderTitle = styled.Text`
 
 
 `
-const ColorSwatch = styled.View`
-    height: 60px;
-    
-    display: block;
-    width: 60px;
 
-    
-`
-const FolderCard = props => {
+const NoteCard = props => {
     return(
-        <Card onPress={()=>props.navigation.navigate('NotesPage', {folder: props.folder})}>
+        <Card>
             <FolderTitle>
                 {props.title}
-                
             </FolderTitle>
-            <ColorSwatch style={{backgroundColor: props.color}}/>
         </Card>
     )
 }
 
-
-export default FolderCard;
+export default NoteCard;
