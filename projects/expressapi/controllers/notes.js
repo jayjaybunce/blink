@@ -36,7 +36,6 @@ const createNote = async (req, res) => {
 const updateNote = async (req,res) => {
     try{
         const response = await Note.findOneAndUpdate({_id: req.body._id}, req.body)
-        console.log(response)
         res.status(200).send('Note updated')
     }catch(error){
         console.log('updateNote', error)

@@ -1,5 +1,5 @@
 const Folder = require('../models/folder')
-
+const Note = require('../models/note')
 const getFoldersForUser = async (req,res) => {
     const folders = await Folder.find({owner: req.user})
     res.json(folders)
@@ -17,8 +17,12 @@ const createFolder = async (req,res) => {
 
 const deleteFolder = async (req,res) => {
     try{
-        const response = await Folder.findByIdAndRemove(req.body.id)
-        res.status(200).send('Folder Removed')
+        const request = await Note.deleteMany({folder: req.body.id})
+        if(request.ok === 1){
+            const response = await Folder.findByIdAndRemove(req.body.id)
+            res.status(200).send('Folder Removed')
+            
+        }
     }catch(e){
         console.log(e)
     }

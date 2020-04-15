@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
+import { NetInfo } from 'react-native-netinfo'
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import PageHeader from './components/PageHeader/PageHeader'
@@ -27,6 +28,7 @@ class App extends React.Component{
     user: null,
     
   }
+  
   handleSignupOrLogin = async () => {
     let user = await userService.getUser()
     this.setState({
@@ -41,7 +43,12 @@ class App extends React.Component{
     })
     
   }
+  handleConnectionChange = (event) => {
+    console.log('connection changed', event)
+    alert('Device connection status changed')
+  }
   async componentDidMount(){
+    NetInfo.addEventListener('connectionChange', this.handleConnectionChange)
     const token = await userService.getUser()
     
     this.setState({
