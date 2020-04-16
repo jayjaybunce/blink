@@ -2,6 +2,7 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
+import NetInfo from '@react-native-community/netinfo'
 import { createStackNavigator } from '@react-navigation/stack'
 import PageHeader from './components/PageHeader/PageHeader'
 import SignUpForm from './components/SignUpForm/SignUpForm'
@@ -25,7 +26,7 @@ const Stack = createStackNavigator()
 class App extends React.Component{
   state = {
     user: null,
-    
+    userIsOnline: false
   }
   
   handleSignupOrLogin = async () => {
@@ -42,8 +43,26 @@ class App extends React.Component{
     })
     
   }
-  
+  handleNetworkChange = (netInfo) => {
+    if(netInfo.isConnected === true && this.state.userIsOnline !== true){
+      this.setState({
+        ...this.state,
+        userIsOnline: true
+      })
+      alert('app is online')
+    }else if(netInfo.isConnected === false && this.state.userIsOnline !== false){
+      this.setState({
+        ...this.state,
+        userIsOnline: false
+      })
+      alert('app is offline')
+    }
+
+  }
   async componentDidMount(){
+    unsubscribe = NetInfo.addEventListener(state => {
+      this.handleNetworkChange(state)
+    });
     try{
       const token = await userService.getUser()
 
@@ -57,6 +76,7 @@ class App extends React.Component{
     
   }
   render(){
+    
     return (
       <NavigationContainer>
          {this.state.user ? 
@@ -75,6 +95,7 @@ class App extends React.Component{
                         {...props}
                         user={this.state.user}
                         handleLogout={this.handleLogout}
+                        userIsOnline={this.state.userIsOnline}
                         
                     />
                     }
@@ -86,6 +107,7 @@ class App extends React.Component{
                             {...props}
                             user={this.state.user}
                             handleLogout={this.handleLogout}
+
                         />
                         }
                     </Stack.Screen>
@@ -96,6 +118,7 @@ class App extends React.Component{
                             {...props}
                             handleLogout={this.handleLogout}
                             user={this.state.user}
+                            userIsOnline={this.state.userIsOnline}
 
                           />
                         
@@ -108,6 +131,7 @@ class App extends React.Component{
                             {...props}
                             user={this.state.user}
                             handleLogout={this.handleLogout}
+                            userIsOnline={this.state.userIsOnline}
                           />
                       }
                     </Stack.Screen>
@@ -118,6 +142,7 @@ class App extends React.Component{
                             {...props}
                             user={this.state.user}
                             handleLogout={this.handleLogout}
+                            userIsOnline={this.state.userIsOnline}
                           />
                       }
                     
@@ -127,6 +152,7 @@ class App extends React.Component{
                         props=>
                         <NewNoteForm
                           {...props}
+                          userIsOnline={this.state.userIsOnline}
                         />
                       }
                     </Stack.Screen>
@@ -137,6 +163,7 @@ class App extends React.Component{
                           {...props}
                           user={this.state.user}
                           handleLogout={this.handleLogout}
+                          userIsOnline={this.state.userIsOnline}
                         />
                       }
                     </Stack.Screen>
@@ -151,6 +178,7 @@ class App extends React.Component{
                     <HomePage
                     {...props}
                     user={this.state.user}
+                    userIsOnline={this.state.userIsOnline}
                     />
                 }
                 </Stack.Screen>
@@ -161,6 +189,7 @@ class App extends React.Component{
                         {...props} // SPREAD OPERATER NECESSARY TO PASS NAV PROPS
                         user={this.state.user}
                         handleSignupOrLogin={this.handleSignupOrLogin}
+                        userIsOnline={this.state.userIsOnline}
                     />
                 }
                 </Stack.Screen>
@@ -170,6 +199,7 @@ class App extends React.Component{
                 <LoginPage
                     {...props}
                     handleSignupOrLogin={this.handleSignupOrLogin}
+                    userIsOnline={this.state.userIsOnline}
                 />
                 }
                 </Stack.Screen>

@@ -129,7 +129,7 @@ class FoldersList extends React.Component{
                             />
                             </Swipeout>
                         )
-                    }): 'no folders'}
+                    }): null}
                     
                 
             </Container>

@@ -2852,6 +2852,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.7.tgz#a65ce0702f55cb67fd777995de6fc7b3e5781903"
   integrity sha512-9KbP7LTLFz9dx1heURJbO6nuVMdSjDez8znlrUzaB1nUwKVsTTwlKRuHxGUYIIkReLWrJQeCv9tidy+84z2eCw==
 
+"@react-native-community/netinfo@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-5.0.0.tgz#c8708558c9a116c138a43bed4bb0b4af85f111bc"
+  integrity sha512-MDvQ+jh9P1S8/CvxLyDqWFNc31oL5a2UkVtOyGFslLmxbO3Q4h/xFPM+b2NJ97GvQAsdhL18EpOWVu1AXodeFw==
+
 "@react-navigation/core@^5.3.3":
   version "5.3.3"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.3.3.tgz#0e8f174193ac10a163b74c68a5ea83a507908db9"
@@ -6188,14 +6193,6 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-ckeditor4-react@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/ckeditor4-react/-/ckeditor4-react-1.1.0.tgz#8abb6bf557847f0ec72df33d5fd7a390264dd9fc"
-  integrity sha512-O4PH80yL69z+/kNKlqCTQqQ/70RHqckeLNsOaancOSJnliKz8CgkRUtkgNp/6pa8pMD9o0CvKw2IoPR7jZr1uQ==
-  dependencies:
-    load-script "^1.0.0"
-    prop-types "^15.6.2"
-
 class-utils@^0.3.5:
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/class-utils/-/class-utils-0.3.6.tgz#f93369ae8b9a7ce02fd41faad0ca83033190c463"
@@ -7571,11 +7568,6 @@ didyoumean@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/didyoumean/-/didyoumean-1.2.1.tgz#e92edfdada6537d484d73c0172fd1eba0c4976ff"
   integrity sha1-6S7f2tplN9SE1zwBcv0eugxJdv8=
-
-diff-match-patch@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/diff-match-patch/-/diff-match-patch-1.0.4.tgz#6ac4b55237463761c4daf0dc603eb869124744b1"
-  integrity sha512-Uv3SW8bmH9nAtHKaKSanOQmj2DnlH65fUpcrMdfdaOxUG02QQ4YGZ8AE7kKOMisF7UqvOlGKVYWRvezdncW9lg==
 
 diff-sequences@^25.2.6:
   version "25.2.6"
@@ -10459,13 +10451,6 @@ immer@1.10.0:
   resolved "https://registry.yarnpkg.com/immer/-/immer-1.10.0.tgz#bad67605ba9c810275d91e1c2a47d4582e98286d"
   integrity sha512-O3sR1/opvCDGLEVcvrGTMtLac8GJ5IwZC4puPrLuRj3l7ICKvkmA0vGuU9OW8mV9WIBRnaxp5GJh9IEAaNOoYg==
 
-immutability-helper@^2.8.1:
-  version "2.9.1"
-  resolved "https://registry.yarnpkg.com/immutability-helper/-/immutability-helper-2.9.1.tgz#71c423ba387e67b6c6ceba0650572f2a2a6727df"
-  integrity sha512-r/RmRG8xO06s/k+PIaif2r5rGc3j4Yhc01jSBfwPCXDLYZwp/yxralI37Df1mwmuzcCsen/E/ITKcTEvc1PQmQ==
-  dependencies:
-    invariant "^2.2.0"
-
 import-cwd@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/import-cwd/-/import-cwd-2.1.0.tgz#aa6cf36e722761285cb371ec6519f53e2435b0a9"
@@ -12238,11 +12223,6 @@ load-json-file@^5.3.0:
     strip-bom "^3.0.0"
     type-fest "^0.3.0"
 
-load-script@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/load-script/-/load-script-1.0.0.tgz#0491939e0bee5643ee494a7e3da3d2bac70c6ca4"
-  integrity sha1-BJGTngvuVkPuSUp+PaPSuscMbKQ=
-
 loader-runner@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.4.0.tgz#ed47066bfe534d7e84c4c7b9998c2a75607d9357"
@@ -13513,11 +13493,6 @@ nan@^2.12.1:
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
   integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
-
-nanoid@^2.1.0:
-  version "2.1.11"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-2.1.11.tgz#ec24b8a758d591561531b4176a01e3ab4f0f0280"
-  integrity sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA==
 
 nanoid@^3.0.2:
   version "3.0.2"
@@ -15570,22 +15545,6 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-native-ckeditor@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-native-ckeditor/-/react-native-ckeditor-1.0.2.tgz#fae4a7f8d61bf1bc36ea39e59a4cf463f574ed41"
-  integrity sha512-UlcFokGHkZS1rI+SPYeqYpyij/Xf72X2r2hf+pCTU6eDiHJvy/4HZvkwW4jOCnrNpXO00KqNKSs2xXKCx3pbHg==
-
-react-native-cn-richtext-editor@1.0.42:
-  version "1.0.42"
-  resolved "https://registry.yarnpkg.com/react-native-cn-richtext-editor/-/react-native-cn-richtext-editor-1.0.42.tgz#93632b8de3e9050015d99008015b349eee0eeefe"
-  integrity sha512-BUYoL6HKBQCbeoksWUy0A7w7iqbwxXXWc7J0fKmou49Juz3tXeLNnS8PGsJZubihFeaSy0Q2+uIskJxVfIIQXQ==
-  dependencies:
-    diff-match-patch "^1.0.4"
-    immutability-helper "^2.8.1"
-    lodash "^4.17.15"
-    shortid "^2.2.14"
-    xmldom "^0.1.27"
-
 react-native-color-picker@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/react-native-color-picker/-/react-native-color-picker-0.5.2.tgz#659e8e97330db2d8778d4fcd2fe922f52e420d3c"
@@ -15594,7 +15553,7 @@ react-native-color-picker@0.5.2:
     prop-types "^15.5.10"
     tinycolor2 "^1.4.1"
 
-react-native-elements@^1.2.7:
+react-native-elements@1.2.7:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-1.2.7.tgz#1eca2db715c41722aeb67aea62bd2a4621adb134"
   integrity sha512-0S+0R1cbItl15i64qrkWnyMztwpw60d0SUsZGVDKRAMf0Jvq9Clgyh/MzxJx2sr42mbedQP1sg5Et4fZM7Fp1w==
@@ -15629,11 +15588,6 @@ react-native-keyboard-listener@1.1.0:
   integrity sha512-39oarw+f1lfxJkYJkKyxdAqhRsaxNK/mSNK5yvdB62RZxCWKlvnUP1EClWYGo6IrxA/v9PI8BqWHGE+MPQK1/w==
   dependencies:
     prop-types "^15.6.0"
-
-react-native-netinfo@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-netinfo/-/react-native-netinfo-1.1.0.tgz#343a4a9413006493f350bc7923688bb3315c3dce"
-  integrity sha512-muGzEvfCm9i+MF1qgPF1LsUmRxaTUWQ9i2TTbBoE/DBfsprv4Ds27iYLQvAgX5QzAMJm+iYKCq+3QN/hvPxrsQ==
 
 react-native-ratings@^6.3.0:
   version "6.5.0"
@@ -16937,13 +16891,6 @@ shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
-
-shortid@^2.2.14:
-  version "2.2.15"
-  resolved "https://registry.yarnpkg.com/shortid/-/shortid-2.2.15.tgz#2b902eaa93a69b11120373cd42a1f1fe4437c122"
-  integrity sha512-5EaCy2mx2Jgc/Fdn9uuDuNIIfWBpzY4XIlhoqtXF6qsf+/+SGZ+FxDdX/ZsMZiWupIWNqAEmiNY4RC+LSmCeOw==
-  dependencies:
-    nanoid "^2.1.0"
 
 side-channel@^1.0.2:
   version "1.0.2"
@@ -19224,7 +19171,7 @@ xmldoc@^1.1.2:
   dependencies:
     sax "^1.2.1"
 
-xmldom@0.1.x, xmldom@^0.1.27:
+xmldom@0.1.x:
   version "0.1.31"
   resolved "https://registry.yarnpkg.com/xmldom/-/xmldom-0.1.31.tgz#b76c9a1bd9f0a9737e5a72dc37231cf38375e2ff"
   integrity sha512-yS2uJflVQs6n+CyjHoaBmVSqIDevTAWrzMmjG1Gc7h1qQ7uVozNhEPJAwZXWyGQ/Gafo3fCwrcaokezLPupVyQ==
