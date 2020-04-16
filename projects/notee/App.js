@@ -25,8 +25,7 @@ const Stack = createStackNavigator()
 
 class App extends React.Component{
   state = {
-    user: null,
-    userIsOnline: false
+    user: null,  
   }
   
   handleSignupOrLogin = async () => {
@@ -60,9 +59,9 @@ class App extends React.Component{
 
   }
   async componentDidMount(){
-    unsubscribe = NetInfo.addEventListener(state => {
-      this.handleNetworkChange(state)
-    });
+    // unsubscribe = NetInfo.addEventListener(state => {
+    //   this.handleNetworkChange(state)
+    // });
     try{
       const token = await userService.getUser()
 
@@ -95,7 +94,7 @@ class App extends React.Component{
                         {...props}
                         user={this.state.user}
                         handleLogout={this.handleLogout}
-                        userIsOnline={this.state.userIsOnline}
+
                         
                     />
                     }
@@ -118,7 +117,7 @@ class App extends React.Component{
                             {...props}
                             handleLogout={this.handleLogout}
                             user={this.state.user}
-                            userIsOnline={this.state.userIsOnline}
+
 
                           />
                         
@@ -131,7 +130,7 @@ class App extends React.Component{
                             {...props}
                             user={this.state.user}
                             handleLogout={this.handleLogout}
-                            userIsOnline={this.state.userIsOnline}
+
                           />
                       }
                     </Stack.Screen>
@@ -142,7 +141,7 @@ class App extends React.Component{
                             {...props}
                             user={this.state.user}
                             handleLogout={this.handleLogout}
-                            userIsOnline={this.state.userIsOnline}
+
                           />
                       }
                     
@@ -152,7 +151,6 @@ class App extends React.Component{
                         props=>
                         <NewNoteForm
                           {...props}
-                          userIsOnline={this.state.userIsOnline}
                         />
                       }
                     </Stack.Screen>
@@ -163,7 +161,6 @@ class App extends React.Component{
                           {...props}
                           user={this.state.user}
                           handleLogout={this.handleLogout}
-                          userIsOnline={this.state.userIsOnline}
                         />
                       }
                     </Stack.Screen>
@@ -178,7 +175,6 @@ class App extends React.Component{
                     <HomePage
                     {...props}
                     user={this.state.user}
-                    userIsOnline={this.state.userIsOnline}
                     />
                 }
                 </Stack.Screen>
@@ -189,7 +185,6 @@ class App extends React.Component{
                         {...props} // SPREAD OPERATER NECESSARY TO PASS NAV PROPS
                         user={this.state.user}
                         handleSignupOrLogin={this.handleSignupOrLogin}
-                        userIsOnline={this.state.userIsOnline}
                     />
                 }
                 </Stack.Screen>
@@ -199,7 +194,6 @@ class App extends React.Component{
                 <LoginPage
                     {...props}
                     handleSignupOrLogin={this.handleSignupOrLogin}
-                    userIsOnline={this.state.userIsOnline}
                 />
                 }
                 </Stack.Screen>

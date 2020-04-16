@@ -1,6 +1,7 @@
 import tokenService from './tokenService'
 
-const BASE_URL = 'http://192.168.0.34:3000/noteeapi/api/folders/'
+// const BASE_URL = 'http://192.168.0.34:3000/noteeapi/api/folders/'
+const BASE_URL = 'https://testapinotee.herokuapp.com/noteeapi/api/folders/'
 
 const getNotesForFolder = async (folderId) => {
     const token = await tokenService.getToken()

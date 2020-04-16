@@ -17,17 +17,6 @@ const Container = styled.View`
     box-shadow: 0px 10px 5px #cfcfcf;
 
 `
-const shadow = {
-    shadowColor: "#000",
-shadowOffset: {
-	width: 0,
-	height: 2,
-},
-shadowOpacity: 0.25,
-shadowRadius: 3.84,
-
-elevation: 5,
-}
 
 class FoldersList extends React.Component{
     state = {
@@ -58,13 +47,19 @@ class FoldersList extends React.Component{
         
     }
     async componentDidMount(){
-        this.refreshComponent()
+
+
+            this.refreshComponent()
+
+     
      
     }
     async componentWillReceiveProps(){
-      this.refreshComponent()
+
+            this.refreshComponent()
+
+
     }
-   
     render(){
         const swipeoutBtns = [
             {

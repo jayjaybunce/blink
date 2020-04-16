@@ -20,7 +20,10 @@ const NoteeHome = props => {
             />
             <FoldersList 
             navigation={props.navigation}
-            isFocused={isFocused}/>
+            isFocused={isFocused}
+            userIsOnline={props.userIsOnline}
+            />
+            
         </View>
     )
 }
