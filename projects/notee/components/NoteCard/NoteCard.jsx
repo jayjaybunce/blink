@@ -27,7 +27,7 @@ const FolderTitle = styled.Text`
 
 const NoteCard = props => {
     return(
-        <Card onPress={() => props.navigation.navigate('EditNote', {folder: props.folder, note: props.note})}>
+        <Card onPress={() => props.navigation.navigate('EditNote', {folder: props.folder, note: props.note, refreshComponent: props.refreshComponent})}>
             <FolderTitle>
                 {props.title}
             </FolderTitle>

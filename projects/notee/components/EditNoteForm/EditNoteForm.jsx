@@ -70,9 +70,11 @@ class EditNoteForm extends React.Component{
             }
             try{
                 const response = await noteService.updateNote(this.state.folder._id, note)
+                this.props.route.params.refreshComponent()
+
                 
             }catch(error){
-                
+                console.log(error)
             }
         }
     }

@@ -15,8 +15,8 @@ const CircleButton = styled.TouchableOpacity`
 const UserLetter = styled.Text`
     color: black;
     text-align: center;
-    font-size: 25px;
-    line-height: 47px
+    font-size: 25;
+    line-height: 47
 `
 
 

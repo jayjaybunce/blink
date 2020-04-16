@@ -32,25 +32,18 @@ async function signup(req, res){
 async function login(req,res){
     
     try{
-        // Try to find a user based on the only unique field - email
         const user = await User.findOne({email: req.body.email})
-        
-        // If a user with that email doesnt exist, send a status code of 401 and json: {"err": "bad credentials"}
         if (!user) return res.status(401).json({err: 'bad credentials'})
-        // If a user with that email does exist, use the comparePassword method defined on the user model
         user.comparePassword(req.body.password, (err, isMatch) => {
-            // If the password matches, create a token and send it back to the client on the response
             if (isMatch){
                 const token = createJWT(user)
+                console.log(token)
                 res.json({token})
-            // If the password doesn't matche, send back a 401 status code and json: {"err": "bad credentials"}
             }else{
                 return res.status(401).json({err: 'bad credentials'})
             }
         });
-    // Catch all erros and send the mback on the response
     }catch (err) {
-        
         return res.status(401).json(err)
     }
 }

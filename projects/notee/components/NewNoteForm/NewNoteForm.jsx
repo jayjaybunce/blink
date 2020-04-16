@@ -67,7 +67,7 @@ class NewNoteForm extends React.Component{
             try{
                 const response = await noteService.createNote(this.state.folder._id, this.state.content)
             }catch(error){
-                console.log('newnoteform compwillunmount', error)
+                // console.log('newnoteform compwillunmount', error)
             }
         }
     }

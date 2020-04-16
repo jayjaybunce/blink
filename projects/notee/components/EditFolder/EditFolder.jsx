@@ -80,7 +80,7 @@ const EditFolder = props => {
                 props.navigation.pop()
             }
         }catch(e){
-            console.log(e)
+            // console.log(e)
         }
     } 
     return(

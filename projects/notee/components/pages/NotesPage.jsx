@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled, { css } from '@emotion/native'
 import { Text, View, TouchableOpacity, ScrollView} from 'react-native'
 import TopNav from '../TopNav/TopNav'
@@ -45,7 +45,7 @@ const Header = styled.View`
 `
 
 const NotesPage = props => {
-        const isFocused = useIsFocused()
+    const [isFocused, setIsFocused] = useState(props.navigation.isFocused())
         return(
             <View>
                 <TopNav

@@ -15,7 +15,7 @@ const getFoldersForUser = async () => {
         return response.json()
 
     }catch(e){
-        console.log(e)
+        // console.log(e)
     }
 }
 
@@ -33,7 +33,7 @@ const createFolder = async (folderData) => {
         })
         return response
     }catch(error){
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -51,7 +51,7 @@ const deleteFolder = async(folderId) => {
         })
         return response
     }catch(error){
-        console.log('error in delete folder', error)
+        // console.log('error in delete folder', error)
     }
 }
 
@@ -68,7 +68,7 @@ const updateFolder = async(folderData) => {
         })
         return response;
     }catch(error){
-        console.log(error)
+        // console.log(error)
     }
 }
 export default {

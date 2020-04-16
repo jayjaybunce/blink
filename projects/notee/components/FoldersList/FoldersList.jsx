@@ -46,26 +46,25 @@ class FoldersList extends React.Component{
 
         }
     }
+    refreshComponent = async () => {
+        const folders = await folderService.getFoldersForUser()
+        
+        this.setState({
+            folders: folders
+        })
+    }
     handleEdit = (folderId) => {
         this.props.navigation.navigate('EditFolder',folderId)
         
     }
     async componentDidMount(){
-        const folders = await folderService.getFoldersForUser()
-        
-        this.setState({
-            folders: folders
-        })
+        this.refreshComponent()
      
     }
     async componentWillReceiveProps(){
-        const folders = await folderService.getFoldersForUser()
-        
-        this.setState({
-            folders: folders
-        })
+      this.refreshComponent()
     }
-    
+   
     render(){
         const swipeoutBtns = [
             {
@@ -86,7 +85,8 @@ class FoldersList extends React.Component{
             <Container>
                     {this.state.folders ? this.state.folders.map((folder,index) => {
                         return(
-                            <Swipeout 
+                            <Swipeout
+                                key={index} 
                                 sensitivity={10}
                                 autoClose={true}
                                 buttonWidth={60}

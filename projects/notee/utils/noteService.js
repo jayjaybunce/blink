@@ -14,7 +14,7 @@ const getNotesForFolder = async (folderId) => {
         })
         return response.json()
     }catch(error){
-        console.log('getnotesforfolder', error)
+        // console.log('getnotesforfolder', error)
     }
 }
 
@@ -31,7 +31,7 @@ const createNote = async (folderId, note) => {
         })
         return response
     }catch(error){
-        console.log('create note', error)
+        // console.log('create note', error)
     }
     
 }
@@ -49,7 +49,7 @@ const updateNote = async(folderId, note) => {
         })
         return response
     }catch(error){
-        console.log('updateNote', note)
+        // console.log('updateNote', note)
     }
 }
 const deleteNote = async (folderId, noteId) => {
@@ -64,7 +64,7 @@ const deleteNote = async (folderId, noteId) => {
         })
         return response
     }catch(error){
-        console.log('deleteNote', error)
+        // console.log('deleteNote', error)
     }
 }
 

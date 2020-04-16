@@ -77,7 +77,7 @@ const NewFolder = props => {
                 props.navigation.pop()
             }
         }catch(e){
-            console.log(e)
+            // console.log(e)
         }
     }
     const [title, setTitle] = useState( props.title? props.title: null)

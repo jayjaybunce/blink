@@ -21,8 +21,7 @@ const LoginForm = props => {
               password
           });
           props.handleSignupOrLogin();
-        } catch (err) {
-          console.log(err)
+        }catch (err) {
           alert('Invalid Credentials!');
         }
       }
@@ -46,7 +45,7 @@ const LoginForm = props => {
             <Text style={styles.label}>Password</Text>
             <DynInput
                 textContentType='password'
-                secureTextEntry='true'
+                secureTextEntry={true}
                 name='password'
                 size='full'
                 inputValue={password}

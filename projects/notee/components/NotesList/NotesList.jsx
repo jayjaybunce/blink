@@ -5,6 +5,7 @@ import styled from '@emotion/native'
 import NoteCard from '../NoteCard/NoteCard'
 import Swipeout from 'react-native-swipeout'
 
+
 const Container = styled.View`
     width: 90%;
     background-color: white;
@@ -21,29 +22,46 @@ const Container = styled.View`
 
 class NotesList extends React.Component{
     state = {
-        notes: null,
-        offset: 0
+        offset: 0,
+        notes: []
+
     }
-    async componentDidMount(){
+    refreshComponent = async () => {
         const notes = await noteService.getNotesForFolder(this.props.folder._id)
         this.setState({
             notes: notes
         })
     }
-    async componentWillReceiveProps(){
+    onFocused = async () => {
         const notes = await noteService.getNotesForFolder(this.props.folder._id)
         this.setState({
             notes: notes
         })
     }
+    componentDidMount(){
+        this.refreshComponent()
+        this._unsubscribe = this.props.navigation.addListener('focus', this.onFocused)
+
+    }
+    componentWillUnmount(){
+        this._unsubscribe
+    }
+
     handleDelete = async (folderId, noteId) => {
         try{
             const response = await noteService.deleteNote(folderId, noteId)
+            if(response.ok){
+                const notes = this.state.notes.filter(note => note._id !== noteId)
+                this.setState({
+                    notes: notes
+                })
+            }
         }catch(error){
-            console.log('NotesList handle delete', error)
+            // console.log('NotesList handle delete', error)
         }
     }
     render(){
+        
         return(
             <Container style={{height: '75%'}}>
             <ScrollView >
@@ -53,6 +71,7 @@ class NotesList extends React.Component{
                                 sensitivity={10}
                                 autoClose={true}
                                 buttonWidth={60}
+                                key={index}
                                 right={
                                     [
                                         {
@@ -81,6 +100,7 @@ class NotesList extends React.Component{
                             note={note}
                             key={index}
                             title={note.title}
+                            refreshComponent={this.refreshComponent}
                         />
                         </Swipeout>
                     )

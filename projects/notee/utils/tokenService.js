@@ -1,11 +1,18 @@
 import * as SecureStore from 'expo-secure-store'
+import {decode as atob, encode as btoa} from 'base-64'
 
-const setToken = token => {
+const setToken = async (token) => {
     if(token){
-        SecureStore.setItemAsync('token', token);
+        try{
+            await SecureStore.setItemAsync('token', token);
+        }catch(error){
+
+        }
     } else {
-        SecureStore.deleteItemAsync('token')
+        let result = await SecureStore.deleteItemAsync('token')
+        return result
     }
+    
 }
 
 const getToken = async () => {
@@ -25,8 +32,14 @@ const getToken = async () => {
 }
 
 const getUserFromToken = async () => {
-    const token = await getToken();
-    return token ? JSON.parse(atob(token.split('.')[1])).user : null;
+    try{
+        const token = await getToken();
+        return token ? JSON.parse(atob(token.split('.')[1])).user : null;
+
+    }catch(error){
+        // console.log('getuserfromtoken', error)
+        console.log(JSON.stringify(error))
+    }
 
 }
 

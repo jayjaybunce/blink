@@ -61,8 +61,6 @@ const SignUpForm = props => {
     }
 
     const handleSubmit = async (e) => {
-        
-        console.log('handling submit')
         try {
           await userService.signup(
               {
@@ -78,7 +76,7 @@ const SignUpForm = props => {
           // Successfully signed up - show GamePage
           props.history.push('/');
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             setError(err)
           // Invalid user data (probably duplicate email)
         //   props.updateMessage(err.message);

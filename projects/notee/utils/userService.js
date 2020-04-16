@@ -12,14 +12,19 @@ const signup = user => {
     .then(res => {
         if (res.ok) return res.json()
 
-        throw new Error('Email already taken!');
+        throw new Error('Email already taken!')
     })
     .then(({token}) => tokenService.setToken(token))
 }
 
 const getUser = async () => {
-    let token = await tokenService.getUserFromToken()
-    return token
+    try{
+        let token = await tokenService.getUserFromToken()
+        return token
+
+    }catch(e){
+        console.log({error: e})
+    }
 }
 
 const logout = () => {
@@ -33,11 +38,13 @@ const login = creds => {
         body: JSON.stringify(creds)
     })
     .then(res => {
-        console.log(res)
-        if (res.ok) return res.json()
+        if (res.ok){
+            return res.json()
+        } 
         throw new Error('Bad Credentials')
     })
-    .then(({token}) => tokenService.setToken(token));
+    .then(({token}) => tokenService.setToken(token))
+    
 }
 
 
