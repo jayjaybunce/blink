@@ -29,6 +29,8 @@ Using the App:
 
 ## For Android Devices:
 
+    *Android version currently experiencing breaking bugs*
+
     Download the Expo Client app
     Visit the hosted url on your phone, select 'Open project using Expo'
 
