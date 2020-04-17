@@ -42,7 +42,7 @@ Notee is my first React Native project, and working on it truly is a labor of lo
 
 As I am early in this process, things will change as I explore new UI designs and navigation flows, as well as working with offline functionality, however here are how things look:
 
-<p align="center">
+<p align="center" background-color='grey'>
 <img src="https://i.imgur.com/z4S9IGG.png" width="500">
 <img src="https://i.imgur.com/7thtMz4.png" width="500">
 <img src="https://i.imgur.com/4XKFa9m.png" width="500">
