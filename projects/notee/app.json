@@ -22,6 +22,10 @@
         },
         "packagerOpts": {
             "config": "metro.config.js"
-        }
+        },
+        "android": {
+            "package": "com.yourcompany.yourappname",
+            "versionCode": 1
+          }
     }
 }

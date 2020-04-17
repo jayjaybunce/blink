@@ -4,6 +4,7 @@ import { View, Text, ScrollView, } from 'react-native'
 import styled from '@emotion/native'
 import NoteCard from '../NoteCard/NoteCard'
 import Swipeout from 'react-native-swipeout'
+import { onSessionWasInterrupted } from 'expo/build/AR'
 
 
 const Container = styled.View`
@@ -32,19 +33,26 @@ class NotesList extends React.Component{
             notes: notes
         })
     }
+    wait = async (ms) =>{
+        return new Promise(resolve => {
+          setTimeout(resolve, ms);
+        });
+      }
     onFocused = async () => {
+        await this.wait(1000)
         const notes = await noteService.getNotesForFolder(this.props.folder._id)
-        this.setState({
-            notes: notes
-        })
+            this.setState({
+                notes: notes
+            })
+        
     }
     componentDidMount(){
+        this.unsubscribe = this.props.navigation.addListener('focus', this.onFocused)
         this.refreshComponent()
-        this._unsubscribe = this.props.navigation.addListener('focus', this.onFocused)
 
     }
     componentWillUnmount(){
-        this._unsubscribe
+        this.props.navigation.removeListener('focus')
     }
 
     handleDelete = async (folderId, noteId) => {
@@ -61,11 +69,10 @@ class NotesList extends React.Component{
         }
     }
     render(){
-        
         return(
             <Container style={{height: '75%'}}>
             <ScrollView >
-                { this.state.notes ? this.state.notes.map((note, index)=> {
+                { this.state.notes.length > 0 ? this.state.notes.map((note, index)=> {
                     return(
                         <Swipeout 
                                 sensitivity={10}
@@ -77,7 +84,6 @@ class NotesList extends React.Component{
                                         {
                                             text: 'Delete',
                                             backgroundColor: 'red',
-                                            underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
                                             onPress: () =>this.handleDelete(note.folder,note._id)
                                     
                                         },
@@ -105,7 +111,7 @@ class NotesList extends React.Component{
                         </Swipeout>
                     )
                 })
-                : null}
+                : <Text style={{padding: 10, fontSize:16, textAlign: 'center'}}>Click the + button next to {this.props.folder.title} to add a note.</Text>}
 
                 </ScrollView>
             </Container>

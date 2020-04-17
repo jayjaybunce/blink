@@ -61,20 +61,6 @@ class FoldersList extends React.Component{
 
     }
     render(){
-        const swipeoutBtns = [
-            {
-                text: 'Delete',
-                backgroundColor: 'red',
-                underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-                onPress: (event) =>this.handleSubmit(event)
-        
-            },
-            {
-                text: 'Edit',
-                backgroundColor: '#42f5f2',
-                underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-            }
-        ]
         return(
             
             <Container>
@@ -90,14 +76,12 @@ class FoldersList extends React.Component{
                                         {
                                             text: 'Delete',
                                             backgroundColor: 'red',
-                                            underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
                                             onPress: () =>this.handleDelete(folder._id)
                                     
                                         },
                                         {
                                             text: 'Edit',
                                             backgroundColor: '#42f5f2',
-                                            underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
                                             onPress: () =>this.handleEdit({title: folder.title, color: folder.color, id: folder._id})
                                         }
                                     ]

@@ -15,7 +15,6 @@ const NoteField = styled.TextInput`
     height: 100%;
     font-size: 20px;
     ${'' /* background-color: red; */}
-    vertical-align: top;
     padding: 10px;
     overflow: scroll;
 

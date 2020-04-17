@@ -3,10 +3,11 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import LargeButton from '../LargeButton/LargeButton'
 import styled, { css } from '@emotion/native'
 import { LinearGradient } from 'expo-linear-gradient'
+
 const AppTitle = styled.Text`
-    font-size: 50px;
+    font-size: 50;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 50;
     color: white;
     
     
@@ -15,7 +16,6 @@ const AppTitle = styled.Text`
 const FlexContainer = styled.View`
     display: flex;
     flex-direction: column;
-
     justify-content: space-around;
     height: 100%;
 `

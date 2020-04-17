@@ -1,7 +1,7 @@
 import tokenService from './tokenService'
 
 // const BASE_URL = 'http://192.168.0.34:3000/noteeapi/api/users/'
-const BASE_URL = 'https://testapinotee.herokuapp.com/noteeapi/api/users/'
+const BASE_URL = 'https://blabs-noteeapi.herokuapp.com/noteeapi/api/users/'
 
 const signup = user => {
     return fetch(BASE_URL + 'signup', {

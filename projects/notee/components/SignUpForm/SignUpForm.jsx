@@ -119,26 +119,26 @@ const SignUpForm = props => {
             <DynInput
                 placeholder='Eight or more characters'
                 textContentType='password'
-                secureTextEntry='true'
+                secureTextEntry={true}
                 name='password'
                 size='full'
                 inputValue={password}
                 handleChange={setPassword}
                 validInput={doPasswordsMatch()}
             />
-            {doPasswordsMatch()?<Icon containerStyle={styles.passwordIcon} name='done' type='material' color='#e0e0e0' size='40'/>:null }
+            {doPasswordsMatch()?<Icon containerStyle={styles.passwordIcon} name='done' type='material' color='#e0e0e0' size={40}/>:null }
             <Text style={styles.label}>Confirm Password</Text>
             <DynInput
                 placeholder='Eight or more characters'
                 textContentType='password'
-                secureTextEntry='true'
+                secureTextEntry={true}
                 size='full'
                 name='password'
                 inputValue={passwordConf}
                 handleChange={setPasswordConf}
                 validInput={doPasswordsMatch()}
             />
-            {doPasswordsMatch()?<Icon containerStyle={styles.passwordIcon} name='done' type='material' color='#e0e0e0' size='40'/>:null }
+            {doPasswordsMatch()?<Icon containerStyle={styles.passwordIcon} name='done' type='material' color='#e0e0e0' size={40}/>:null }
             <Text style={styles.messageText}>
                 
             </Text>

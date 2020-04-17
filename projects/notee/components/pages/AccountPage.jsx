@@ -3,6 +3,7 @@ import {View, Text, TouchableOpacity } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import styled from '@emotion/native'
 import AccountButton from '../AccountButton/AccountButton'
+import misc from '../../utils/misc'
 const Header = styled.View`
     width: 100%;
     ${'' /* background-color: rgba(255, 255, 255, 0.09); */}
@@ -12,6 +13,20 @@ const Header = styled.View`
     justify-content: space-between;
     padding: 5px;
     
+`
+const Button = styled.TouchableOpacity`
+    width: 80%;
+    height: 50px;
+    margin: 0 auto;
+    background-color: #00e676;
+    margin-top: 10px;
+    
+`
+const ButtonTitle = styled.Text`
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    line-height: 50px;
 `
 
 
@@ -25,12 +40,30 @@ const Title = styled.Text`
     font-size: 30px;
     text-align: center;
 `
+const Container = styled.View`
+    width: 90%;
+    background-color: white;
+    height: 50%;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 5px #cfcfcf;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 
+`
+const InfoText = styled.Text`
+    margin-top: 20px;
+    padding: 5px
 
+`
 
 
 const AccountPage = props => {
     // console.log(props)
+    
     return(
         <>
             <LinearGradient
@@ -48,13 +81,24 @@ const AccountPage = props => {
                     />
                 </Header>
                 </LinearGradient>
-            <TouchableOpacity onPress={()=>{
-                props.handleLogout()
-            }}>
-                <Text>
-                    Logout
-                </Text>
-            </TouchableOpacity>
+            <Container>
+                <Title style={{color: 'black', textAlign: 'left'}}>
+                    {props.user.firstName} {props.user.lastName}
+                </Title>
+                <View>
+                    <InfoText>
+                        Account Created {misc.formatDate(props.user.createdAt)}
+                    </InfoText>
+                    <InfoText>
+                        Email Address: {props.user.email}
+                    </InfoText>
+                </View>
+                <Button onPress={props.handleLogout}>
+                    <ButtonTitle>
+                        Logout
+                    </ButtonTitle>
+                </Button>
+            </Container>
         </>
     )
 }
