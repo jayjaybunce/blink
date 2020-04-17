@@ -2,6 +2,8 @@
 
 Using a forked monorepo project skeleton to combine React Native SPA and Express/Node/MongoDB backend.
 
+Trello: https://trello.com/b/tW8zbcGQ/project4
+
 ## Backend
 
     Express/Node
