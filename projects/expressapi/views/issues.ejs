@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Notee</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://fonts.googleapis.com/css?family=Manrope&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="icon" 
+      type="image/png" 
+      href="/images/favicon.ico">
+  </head>
+  <body>
+    <header class="small-header">
+      <div class="small-logo-container">
+        <h2>Issues</h2>
+        <img src="/images/icon.png" class="small-logo" height="200px"/>
+        <form action="/issues" method="post">
+            <input type="email" name="email" placeholder="email" required/>
+            <input type="date" name="date" required>
+            <select name="appLocation" required>
+                <option name="loginPage">Login Page</option>
+                <option name="signupPage">Signup Page</option>
+                <option name="foldersPage">Folders Page</option>
+                <option name="notesPage">Notes Page</option>
+                <option name="accountPage">Account Page</option>
+            </select>
+            <textarea name="description" placeholder="Describe your issue" required></textarea>
+            <button type="submit" value="Submit Issue">Submit Issue</button>
+        </form>
+
+      </div>
+    </header>
+   
+  </body>
+</html>

@@ -1,8 +1,122 @@
 body {
-  padding: 50px;
+  margin: 0;
+  padding: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: rgb(131,58,180);
+  background: linear-gradient(180deg, rgba(131,58,180,1) 16%, rgba(29,235,253,1) 61%, rgba(29,253,121,1) 100%);
+  font-family: 'Manrope', sans-serif;
+  
 }
 
 a {
   color: #00B7FF;
+}
+
+
+header {
+  width: 70vw;
+  display: flex;
+  height: 100vh;
+  margin: 0 auto;
+  flex-direction: row;
+}
+header h1{
+  font-size: 8vh;
+  text-align: center;
+  color: white;
+}
+header h2{
+  font-size: 4vh;
+  text-align: center;
+  color: white;
+}
+header h3 {
+  font-size: 3vh;
+  text-align: center;
+  color: white;
+}
+header li {
+  color: white;
+}
+main {
+  height: 80vh;
+  
+
+}
+main a {
+  color: black;
+}
+
+.instructions {
+  width: 70%;
+  
+  margin: 0 auto;
+
+  border-radius: 10px;
+  padding: 20px;
+  color: black;
+}
+
+.logo-container{
+  margin: 0 auto;
+  height: 500px;
+  width: 500px;
+}
+.small-logo-container{
+  margin: 0 auto;
+  height: 300px;
+  width: 300px;
+}
+.logo {
+  height: 500px;
+  width: 500px;
+}
+.small-logo{
+  height: 300px;
+  width: 300px;
+}
+.blacka {
+  color: white;
+}
+input{
+  width: 100%;
+  margin-top: 20px;
+  height: 20px;
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #00FC7B;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  font-size: 20px;
+}
+input::placeholder{
+  color: white;
+}
+textarea{
+  margin-top: 20px;
+  width: 100%;
+  font-size: 15px;
+  padding: 10px;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  height:200px;
+}
+select{
+  margin-top: 20px;
+  width: 100%;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+button{
+  margin-top: 20px;
+  font-size: 25px;
+  width: 100%;
+  border: none;
+  padding: 5px;
+  color: white;
+  background-color: #00FC7B;
+  font-family: 'Roboto', sans-serif;
+  border: 0.2px solid white;
+  
 }
