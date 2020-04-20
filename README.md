@@ -9,7 +9,7 @@ Trello: https://trello.com/b/tW8zbcGQ/project4
     Express/Node
     MongoDB/Mongoose
 
-Deployed backend can be found at: https://testapinotee.herokuapp.com/
+Deployed backend can be found at: https://blabs-noteeapi.herokuapp.com/
 
 ## Frontend
 

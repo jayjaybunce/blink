@@ -5,6 +5,7 @@ import DynInput from '../DynInput/DynInput'
 import { Icon } from 'react-native-elements'
 import userService from '../../utils/userService'
 
+
 const Container = styled.View`
     margin: 30px 20px 0 20px;
     
@@ -85,11 +86,11 @@ const SignUpForm = props => {
     
       return (
         <Container>
+        
             <ViewInline>
                 <Text style={styles.label}>First Name</Text>
                 <Text style={styles.label}>Last Name</Text>
                 <DynInput
-                    
                     autoCapitalize='words'
                     size='half'
                     inputValue={firstName}

@@ -14,7 +14,8 @@ const DynInput = props => {
                         styles.input,
                         props.size === 'full'? styles.fullWidthInput: styles.halfWidthInput,
                         props.validInput === true ? styles.borderGreen : styles.borderWhite,
-                        props.blackBorder === true ? styles.borderBlack : null
+                        props.blackBorder === true ? styles.borderBlack : null,
+
                     ]
                 }
                 placeholder={props.placeholder}
