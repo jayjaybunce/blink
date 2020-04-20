@@ -25,7 +25,7 @@ const FlexContainer = styled.View`
 
 
 const HomePage = props => {
-    
+    console.log(props)
     return(
         <LinearGradient
             colors={['#833ab4','#1debfd','#1dfd79']}
@@ -43,7 +43,7 @@ const HomePage = props => {
                     <LargeButton 
                         navigation={props.navigation}
                         title='LOGIN'
-                        secondary='true'
+                        secondary={true}
                         navTo='Login'
 
                     />

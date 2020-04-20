@@ -1,13 +1,9 @@
 import 'react-native-gesture-handler';
-import * as React from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
-import NetInfo from '@react-native-community/netinfo'
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+// import NetInfo from '@react-native-community/netinfo'
 import { createStackNavigator } from '@react-navigation/stack'
-import PageHeader from './components/PageHeader/PageHeader'
-import SignUpForm from './components/SignUpForm/SignUpForm'
 import userService from './utils/userService'
-import MainStack from './components/MainStack/MainStack';
 import SignUpPage from './components/pages/SignUpPage'
 import LoginPage from './components/pages/LoginPage'
 import HomePage from './components/pages/HomePage'
@@ -18,9 +14,8 @@ import EditFolder from './components/EditFolder/EditFolder';
 import NotesPage from './components/pages/NotesPage';
 import NewNoteForm from './components/NewNoteForm/NewNoteForm';
 import EditNoteForm from './components/EditNoteForm/EditNoteForm';
-const RootStack = createStackNavigator();
+
 const Stack = createStackNavigator()
-// const ModalStack = createStackNavigator();
 
 
 class App extends React.Component{
@@ -42,22 +37,22 @@ class App extends React.Component{
     })
     
   }
-  handleNetworkChange = (netInfo) => {
-    if(netInfo.isConnected === true && this.state.userIsOnline !== true){
-      this.setState({
-        ...this.state,
-        userIsOnline: true
-      })
-      alert('app is online')
-    }else if(netInfo.isConnected === false && this.state.userIsOnline !== false){
-      this.setState({
-        ...this.state,
-        userIsOnline: false
-      })
-      alert('app is offline')
-    }
+  // handleNetworkChange = (netInfo) => {
+  //   if(netInfo.isConnected === true && this.state.userIsOnline !== true){
+  //     this.setState({
+  //       ...this.state,
+  //       userIsOnline: true
+  //     })
+  //     alert('app is online')
+  //   }else if(netInfo.isConnected === false && this.state.userIsOnline !== false){
+  //     this.setState({
+  //       ...this.state,
+  //       userIsOnline: false
+  //     })
+  //     alert('app is offline')
+  //   }
 
-  }
+  // }
   async componentDidMount(){
     // unsubscribe = NetInfo.addEventListener(state => {
     //   this.handleNetworkChange(state)
@@ -69,7 +64,7 @@ class App extends React.Component{
         user: token
       })
     }catch(e){
-      console.log(JSON.stringify(e))
+      
     }
     
     
@@ -80,11 +75,9 @@ class App extends React.Component{
       <NavigationContainer>
          {this.state.user ? 
             <Stack.Navigator
-        
             screenOptions={{
             headerShown: false,
             cardStyle: {backgroundColor: '#EDEDFB'}
-            
             }}
             >
                 <Stack.Screen name='Notee'>
@@ -94,8 +87,6 @@ class App extends React.Component{
                         {...props}
                         user={this.state.user}
                         handleLogout={this.handleLogout}
-
-                        
                     />
                     }
                     </Stack.Screen>
@@ -106,7 +97,6 @@ class App extends React.Component{
                             {...props}
                             user={this.state.user}
                             handleLogout={this.handleLogout}
-
                         />
                         }
                     </Stack.Screen>
@@ -117,10 +107,7 @@ class App extends React.Component{
                             {...props}
                             handleLogout={this.handleLogout}
                             user={this.state.user}
-
-
                           />
-                        
                       }
                     </Stack.Screen>
                     <Stack.Screen name='EditFolder'>
@@ -130,7 +117,6 @@ class App extends React.Component{
                             {...props}
                             user={this.state.user}
                             handleLogout={this.handleLogout}
-
                           />
                       }
                     </Stack.Screen>
@@ -182,7 +168,7 @@ class App extends React.Component{
                 {
                     props=> 
                     <SignUpPage 
-                        {...props} // SPREAD OPERATER NECESSARY TO PASS NAV PROPS
+                        {...props}
                         user={this.state.user}
                         handleSignupOrLogin={this.handleSignupOrLogin}
                     />
@@ -205,45 +191,6 @@ class App extends React.Component{
   
   
 }
-
-
-// <RootStack.Navigator mode="modal"
-// screenOptions={{
-//   headerShown: false,
-// }}
-// >
-// <RootStack.Screen name='Main'>
-//   {
-//     props=> 
-//     <MainStack
-//       {...props}
-//       user={this.state.user}
-//       handleLogout={this.handleLogout}
-//       handleSignupOrLogin={this.handleSignupOrLogin}
-//     />
-//   }
-// </RootStack.Screen>
-// </RootStack.Navigator>
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 
 export default App;

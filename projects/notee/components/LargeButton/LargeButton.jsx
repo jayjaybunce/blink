@@ -5,23 +5,23 @@ import styled from '@emotion/native'
 
 const Button = styled.TouchableOpacity`
     width: 80%;
-    height: 50px;
+    height: 50;
     margin: 0 auto;
     background-color: #00e676;
-    margin-top: 10px;
+    margin-top: 10;
     
 `
 const Title = styled.Text`
     text-align: center;
     color: white;
-    font-size: 30px;
-    line-height: 50px;
+    font-size: 30;
+    line-height: 50;
 `
 
 
 const LargeButton = props => {
     return (
-        props.secondary === 'true'
+        props.secondary === true
         ?
         <Button 
             style={{backgroundColor: 'white'}} 

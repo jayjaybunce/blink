@@ -26,6 +26,7 @@
         "android": {
             "package": "com.yourcompany.yourappname",
             "versionCode": 1
-          }
+          },
+        "description": "While learning React during my time at General Assembly in Denver, I found a true love for the React framework and It's always been a dream of mine to build a mobile application. With many, and I mean many planned feature and enhancements, I plan to continue work on Notee with plans on publishing to both major mobile marketplaces."
     }
 }
